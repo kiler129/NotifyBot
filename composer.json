@@ -4,6 +4,8 @@
   "minimum-stability": "stable",
   "license": "MIT",
   "require": {
+    "php": ">=7.1.0",
+
     "symfony/config": "~3.3.2",
     "symfony/dependency-injection": "~3.3.2",
     "symfony/yaml": "~3.3.2",
