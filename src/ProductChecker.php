@@ -131,7 +131,7 @@ class ProductChecker
     public function whereAvailableToday(): ?string
     {
         foreach ($this->getAvailability() as $avDetails) {
-            if (strtolower($avDetails['when']) === 'today') {
+            if ($avDetails['waitDays'] < 1) {
                 return $avDetails['where'];
             }
         }

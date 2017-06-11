@@ -76,6 +76,10 @@ class NotifyCommand extends Command implements ContainerAwareInterface
                 }
             } catch (\Throwable $t) {
                 $this->io->error('Checking failed: ' . $t->getMessage());
+
+                if ($output->isDebug()) {
+                    throw $t;
+                }
             }
 
             sleep(5); //Not bad I think ;)
@@ -103,8 +107,9 @@ class NotifyCommand extends Command implements ContainerAwareInterface
             $this->configurationProvider->getNotification()->getTo(),
             'Product availability',
             sprintf(
-                'Product %s is available for pickup TODAY at one of the Apple Stores - go and grab one!',
-                $productChecker->getProductCode()
+                'Product %s is available for pickup TODAY at %s - go and grab one!',
+                $productChecker->getProductCode(),
+                $productChecker->whereAvailableToday()
             )
         );
 
