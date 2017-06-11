@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace noFlash\NotifyBot\Configuration;
 
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -34,6 +35,12 @@ class ConfigurationProvider
             [new ObjectNormalizer(null, null, null, new ReflectionExtractor())],
             [new YamlEncoder()]
         );
+
+        if (!is_readable(self::CONFIG_LOCATION)) {
+            throw new InvalidConfigurationException(
+                sprintf('Configuration file "%s" is not readable', self::CONFIG_LOCATION)
+            );
+        }
 
         $config = file_get_contents(self::CONFIG_LOCATION);
 
