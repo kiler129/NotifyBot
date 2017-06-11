@@ -4,6 +4,8 @@ One day I wanted to buy Apple AirPods, but they're not available anywhere :( But
 I'm a programmer - I can program a robot which will check the availability of the product
 across local stores.... so I did being bored ;)
 
+![preview](https://raw.githubusercontent.com/kiler129/NotifyBot/master/preview.png)
+
 ## What it can do?
 Well, you can get a nice table with availability of desired products in nearby Apple
 Stores. It can also notify you via e-mail (or SMS) after products become available "Today"
