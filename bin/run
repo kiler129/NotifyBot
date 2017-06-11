@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use noFlash\NotifyBot\Application;
+use noFlash\NotifyBot\DependencyInjection\ContainerFactory;
+
+ContainerFactory::getContainer(true)
+    ->get(Application::class)
+    ->run();

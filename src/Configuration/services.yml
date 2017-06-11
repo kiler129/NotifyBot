@@ -1,0 +1,36 @@
+services:
+  _defaults:
+    public: false
+    autowire: true
+    autoconfigure: true
+
+  _instanceof:
+    Symfony\Component\DependencyInjection\ContainerAwareInterface:
+      calls:
+        - method: setContainer
+          arguments: ['@service_container']
+
+  noFlash\NotifyBot\:
+    resource: '../*'
+    exclude: '../Configuration/{Smtp,Product,Notification}Configuration.php'
+
+  noFlash\NotifyBot\Application:
+    public: true
+
+  noFlash\NotifyBot\Configuration\ConfigurationProvider:
+    factory: ['noFlash\NotifyBot\Configuration\ConfigurationProvider', getConfiguration]
+
+  noFlash\NotifyBot\Configuration\SmtpConfiguration:
+    factory: 'noFlash\NotifyBot\Configuration\ConfigurationProvider:getSmtp'
+
+  noFlash\NotifyBot\Configuration\NotificationConfiguration:
+    factory: 'noFlash\NotifyBot\Configuration\ConfigurationProvider:getNotification'
+
+  noFlash\NotifyBot\Configuration\ProductConfiguration:
+    factory: 'noFlash\NotifyBot\Configuration\ConfigurationProvider:getProduct'
+
+  Swift_Transport:
+    factory: 'noFlash\NotifyBot\Mail\SmtpTransportFactory:createTransport'
+
+  Swift_Mailer:
+    class: Swift_Mailer # bloody global NS...

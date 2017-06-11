@@ -1,0 +1,17 @@
+# To use this fill the config file and rename to 'config.yml'
+smtp:
+  host: email-smtp.us-west-2.amazonaws.com
+  port: 587
+  tls: true
+  user: # generate one in AWS console
+  pass: # generate one in AWS console
+  from: email@domain.tld
+
+product:
+  code: MMEF2AM/A # example, this one is for AirPods
+
+notification:
+  location: 12345 # zip code where to search
+  to: email@domain.tld # you can also use e-mails like [tel-number]@tmomail.net for SMS
+  interval: 600 # how often check the availability
+  grace: 7200 # how much time to wait after each notification
