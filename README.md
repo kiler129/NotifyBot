@@ -1,3 +1,9 @@
+# REPOSITORY ARCHIVED
+
+This tool may still be working but it's no longer maintained since 2017. The repository is kept for archival purposes only.
+
+---
+
 # NotifyBot
 
 One day I wanted to buy Apple AirPods, but they're not available anywhere :( But wait!
